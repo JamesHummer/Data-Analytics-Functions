@@ -4,10 +4,27 @@
 
 
 
-##filtering datasets
-
-
-
-
-
-##to return to tomorrow
+######FILTERING DATASETS
+##Filtering for blood type <- who can you donate to
+types <- unique(health$Blood.Type)
+patient <- health[sample(1:nrow(health), 1), ]
+blood_type <- patient$Blood.Type
+blood_type <- substr(blood_type, 1, nchar(blood_type))
+print(blood_type)
+if (blood_type == 'O-'){
+  print('You can donate any blood type')
+} else if (blood_type =='A+'){
+  print('You can donate to type A+ or type AB+ blood')
+} else if (blood_type == 'B+'){
+  print('You can donate to type B+ or type AB+ blood')
+} else if (blood_type == 'AB+'){
+  print('You can donate to only AB+')
+} else if (blood_type == 'A-'){
+  print('You can donate to type A+, AB+, AB-, or A- blood')
+} else if (blood_type == 'B-'){
+  print('You can donate to type B+, AB+, AB-, or B- blood')
+} else if (blood_type == 'O+'){
+  print('You can donate to any blood type except O-')
+} else if (blood_type == 'AB-'){
+  print('You can donate to type AB+ or AB-')
+}
