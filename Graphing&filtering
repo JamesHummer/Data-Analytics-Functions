@@ -28,3 +28,27 @@ if (blood_type == 'O-'){
 } else if (blood_type == 'AB-'){
   print('You can donate to type AB+ or AB-')
 }
+
+
+##compare donor and receiver with switch and function
+patient <- health[sample(1:nrow(health), 1), ]
+patient2 <- health[sample(1:nrow(health), 1), ]
+blood_type2 <- patient2$Blood.Type
+blood_type2 <- substr(blood_type2, 1, nchar(blood_type2)-1)
+blood_type <- patient$Blood.Type
+blood_type <- substr(blood_type, 1, nchar(blood_type)-1)
+print(blood_type)
+print(blood_type2)
+donate <- switch (blood_type,
+  'O' = print('Donate to anyone'),
+  'A' = print('Donate to A or AB'),
+  'B' = Print('Donate to B or AB'),
+  'AB' = print('Donate only to AB')
+)
+receiver <- function(receive){ switch (blood_type2,
+  'O' = print('Only receive O'),
+  'A' = print('Only receive A or O'),
+  'B' = print('Only receive B or O'),
+  'AB' = print('Receive any blood')
+)}
+receiver(patient2)
