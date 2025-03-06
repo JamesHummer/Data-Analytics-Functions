@@ -52,3 +52,26 @@ receiver <- function(receive){ switch (blood_type2,
   'AB' = print('Receive any blood')
 )}
 receiver(patient2)
+
+
+## -- EXAMPLE -- Temperature control of a bioreactor
+
+# Simplified model of a thermostat controller
+thermostat <- function(actual, desired) {
+  dT <- desired-actual
+  new_temp <- actual + dT*.5
+  return (new_temp)
+}
+
+# Temperature in bioreactor over time
+current_temp <- 25
+desired_temp <- 37
+
+time <- 0
+while(abs(desired_temp - current_temp) > 0.01 ) {
+  current_temp <- thermostat(current_temp, desired_temp)
+  print(current_temp)
+  time <- time + 1
+}
+
+print(time)
